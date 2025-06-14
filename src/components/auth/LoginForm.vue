@@ -69,6 +69,8 @@ export default {
         .post(endpointURL, user)
         .then((response) => {
           console.log('Login successful:', response.data)
+          localStorage.setItem('token', response.data.token)
+          localStorage.setItem('user', JSON.stringify(response.data))
           this.$q.notify({ type: 'positive', message: 'Inicio de sesión exitoso.' })
           // Redirigir o realizar otras acciones después del login
           this.$router.push('/')
