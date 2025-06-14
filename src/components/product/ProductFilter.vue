@@ -10,6 +10,7 @@
       emit-value
       map-options
       filled
+      @update:model-value="onChange"
     />
   </div>
 </template>
@@ -23,6 +24,11 @@ export default {
     }
   },
   methods: {
+    onChange(value) {
+      console.log('Selected category:', value.id)
+      // Here you can handle the change event, e.g., filter products based on the selected category
+      this.$emit('categoryChanged', value)
+    },
     loadCategories() {
       // Simulate an API call to fetch categories
       //   this.categories = [

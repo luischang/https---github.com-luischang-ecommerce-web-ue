@@ -1,10 +1,10 @@
 <template>
   <div class="product-page">
     <div class="product-filter q-ml-md q-mr-xl">
-      <ProductFilter />
+      <ProductFilter @categoryChanged="updateProductCategory" />
     </div>
     <div class="product-list">
-      <ProductList />
+      <ProductList :categoriaFiltrada="categorySelected" />
     </div>
   </div>
 </template>
@@ -30,6 +30,20 @@ export default {
   components: {
     ProductFilter,
     ProductList,
+  },
+  data() {
+    return {
+      // You can add any data properties you need here
+      categorySelected: null,
+    }
+  },
+  methods: {
+    updateProductCategory(category) {
+      // Handle the category change event from ProductFilter
+      console.log('Selected category:', category)
+      // You can implement logic to filter products based on the selected category
+      this.categorySelected = category
+    },
   },
 }
 </script>
